@@ -15,6 +15,16 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q72G83WKH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4Q72G83WKH');
+</script>
+
 </head>
 
 <body class="bg-slate-50 text-slate-900">
@@ -125,6 +135,12 @@ document.getElementById('loadCalendly').addEventListener('click', function () {
   script.defer = true;
   document.body.appendChild(script);
 });
+document.getElementById('loadCalendly').addEventListener('click', function () {
+  gtag('event', 'calendar_loaded', {
+    event_category: 'engagement',
+    event_label: 'Calendly Loaded'
+  });
+});
 </script>
 
     
@@ -142,6 +158,27 @@ If you’re looking for free coaching or are not ready to implement changes, thi
 <footer class="py-8 text-center text-sm text-slate-500">
   © 2025 · GoHighLevel Automation & Funnel Specialist
 </footer>
+
+<script>
+window.addEventListener('message', function(e) {
+  if (e.data.event && e.data.event === 'calendly.event_scheduled') {
+
+    // Google Analytics / Google Ads
+    gtag('event', 'booking_completed', {
+      event_category: 'conversion',
+      event_label: 'Calendly Booking'
+    });
+
+    // Meta (Facebook / Instagram)
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead');
+    }
+
+    console.log('Calendly booking tracked successfully');
+  }
+});
+</script>
+
 
 </body>
 </html>
