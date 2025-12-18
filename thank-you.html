@@ -9,18 +9,11 @@
   <!-- Inter Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
- <script>
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'debug_mode': true
-  });
-</script>
-
-  <!-- Google Analytics (GA4) -->
+ <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q72G83WKH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
 
   // Initialize GA4
   gtag('js', new Date());
@@ -28,15 +21,26 @@
     send_page_view: true
   });
 
-  // Fire booking conversion AFTER GA4 is ready
+  // Fire booking conversion safely
   window.addEventListener('load', function () {
-    gtag('event', 'booking_completed', {
-      event_category: 'conversion',
-      event_label: 'GHL Calendar Booking',
-      value: 1
-    });
+
+    // Prevent duplicate conversions
+    if (sessionStorage.getItem('booking_completed_fired')) return;
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'booking_completed', {
+        send_to: 'G-4Q72G83WKH',
+        event_category: 'conversion',
+        event_label: 'GHL Calendar Booking',
+        value: 1
+      });
+
+      sessionStorage.setItem('booking_completed_fired', 'true');
+      console.log('booking_completed sent to GA4 (Ads-safe)');
+    }
   });
 </script>
+
 
 
   <style>
