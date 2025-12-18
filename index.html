@@ -14,6 +14,43 @@
 
   <style>
     body { font-family: 'Inter', sans-serif; }
+    <style>
+.calendar-section {
+  padding: 80px 24px;
+  background: #f8fafc;
+}
+
+.calendar-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.calendar-header h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.calendar-header p {
+  font-size: 16px;
+  color: #475569;
+}
+
+.calendar-embed {
+  overflow: hidden;
+}
+</style>
+
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -111,37 +148,29 @@
       I’ll review your funnels, automations, and CRM before the call so we can focus only on what’s leaking leads—and how to fix it.
     </p>
 
-    <!-- Replace with your GHL / Calendly embed -->
+  
     
-      <div id="calendly-container"
-     class="bg-slate-100 rounded-xl p-8 min-h-[700px] flex items-center justify-center">
-  <button id="loadCalendly"
-          class="bg-blue-600 text-white font-semibold px-6 py-4 rounded-xl shadow hover:bg-blue-700 transition">
-    Load Calendar & Book a Call
-  </button>
-</div>
-<script>
-document.getElementById('loadCalendly').addEventListener('click', function () {
-  const container = document.getElementById('calendly-container');
+      <!-- GHL Calendar Section -->
+<section class="calendar-section">
+  <div class="calendar-wrapper">
 
-  container.innerHTML = `
-    <div class="calendly-inline-widget"
-         data-url="https://calendly.com/jbseguido/discovery-call"
-         style="min-width:320px;height:700px;"></div>
-  `;
+    <div class="calendar-header">
+      <h2>Book a Quick Intro Call</h2>
+      <p>Select a time that works for you. I’ll review your details before the call.</p>
+    </div>
 
-  const script = document.createElement('script');
-  script.src = 'https://assets.calendly.com/assets/external/widget.js';
-  script.defer = true;
-  document.body.appendChild(script);
-});
-document.getElementById('loadCalendly').addEventListener('click', function () {
-  gtag('event', 'calendar_loaded', {
-    event_category: 'engagement',
-    event_label: 'Calendly Loaded'
-  });
-});
-</script>
+    <div class="calendar-embed">
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/booking/05JEJMKQbTKG49CLcY3k"
+        style="width:100%; height:720px; border:0; border-radius:16px;"
+        loading="lazy"
+        allow="camera; microphone; fullscreen"
+      ></iframe>
+    </div>
+
+  </div>
+</section>
+
 
     
 
@@ -160,23 +189,21 @@ If you’re looking for free coaching or are not ready to implement changes, thi
 </footer>
 
 <script>
-window.addEventListener('message', function(e) {
-  if (e.data.event && e.data.event === 'calendly.event_scheduled') {
-
-    // Google Analytics / Google Ads
+  // Google Analytics / Google Ads
+  if (typeof gtag === 'function') {
     gtag('event', 'booking_completed', {
       event_category: 'conversion',
-      event_label: 'Calendly Booking'
+      event_label: 'GHL Calendar Booking',
+      value: 1
     });
-
-    // Meta (Facebook / Instagram)
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead');
-    }
-
-    console.log('Calendly booking tracked successfully');
   }
-});
+
+  // Meta (Facebook / Instagram)
+  if (typeof fbq === 'function') {
+    fbq('track', 'Lead');
+  }
+
+  console.log('GHL booking conversion tracked');
 </script>
 
 

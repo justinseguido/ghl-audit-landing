@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You – Booking Confirmed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q72G83WKH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4Q72G83WKH');
+
+    // Booking conversion event
+    gtag('event', 'booking_completed', {
+      event_category: 'conversion',
+      event_label: 'GHL Calendar Booking',
+      value: 1
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #0f172a;
+    }
+  </style>
+</head>
+
+<body>
+  <main style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;">
+    <div style="max-width:520px; background:#ffffff; padding:40px; border-radius:16px; box-shadow:0 10px 40px rgba(0,0,0,.08); text-align:center;">
+
+      <div style="font-size:48px; margin-bottom:16px;">✅</div>
+
+      <h1 style="font-size:28px; font-weight:800; margin-bottom:12px;">
+        Booking Confirmed
+      </h1>
+
+      <p style="font-size:16px; line-height:1.6; color:#475569; margin-bottom:24px;">
+        Thank you for scheduling a call.  
+        I’ve received your booking and will review your details before our meeting.
+      </p>
+
+      <div style="background:#f1f5f9; border-radius:12px; padding:20px; margin-bottom:24px; text-align:left;">
+        <p style="font-weight:600; margin-bottom:8px;">What happens next:</p>
+        <ul style="margin:0; padding-left:18px; color:#475569;">
+          <li>You’ll receive a confirmation email shortly</li>
+          <li>Please check your calendar for the meeting link</li>
+          <li>Feel free to prepare any questions in advance</li>
+        </ul>
+      </div>
+
+      <a href="/"
+         style="display:inline-block; padding:12px 20px; border-radius:10px; background:#2563eb; color:#ffffff; font-weight:600; text-decoration:none;">
+        Back to Portfolio
+      </a>
+
+    </div>
+  </main>
+</body>
+</html>
